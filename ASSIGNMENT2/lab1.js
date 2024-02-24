@@ -1,7 +1,7 @@
-// Importing the prompt package
+
 const prompt = require('prompt');
 
-// Function to generate computer's selection
+
 function generateComputerSelection() {
     const randomNumber = Math.random();
 
@@ -14,42 +14,41 @@ function generateComputerSelection() {
     }
 }
 
-// Start the prompt
+
 prompt.start();
 
-// Prompt user to choose ROCK, PAPER, or SCISSORS
+
 prompt.get(['userSelection'], function (err, result) {
     if (err) { return onErr(err); }
     
-    // Get user's selection
+    
     const userSelection = result.userSelection.toUpperCase();
     
-    // Generate computer's selection
+    
     const computerSelection = generateComputerSelection();
 
-    // Display user's and computer's selection
-    console.log('User Selection:', userSelection);
-    console.log('Computer Selection:', computerSelection);
+    
+    console.log('\nUser Selection:', '\x1b[36m' + userSelection + '\x1b[0m'); // Cyan color
+    console.log('Computer Selection:', '\x1b[35m' + computerSelection + '\x1b[0m'); // Magenta color
 
-    // Determine the outcome of the game
     if (
         (userSelection === 'ROCK' && computerSelection === 'SCISSORS') ||
         (userSelection === 'PAPER' && computerSelection === 'ROCK') ||
         (userSelection === 'SCISSORS' && computerSelection === 'PAPER')
     ) {
-        console.log('User Wins');
+        console.log('\x1b[32m', 'User Wins', '\x1b[0m'); // Green color
     } else if (
         (computerSelection === 'ROCK' && userSelection === 'SCISSORS') ||
         (computerSelection === 'PAPER' && userSelection === 'ROCK') ||
         (computerSelection === 'SCISSORS' && userSelection === 'PAPER')
     ) {
-        console.log('Computer Wins');
+        console.log('\x1b[31m', 'Computer Wins', '\x1b[0m'); // Red color
     } else {
-        console.log("It's a tie");
+        console.log('\x1b[33m', "It's a tie", '\x1b[0m'); // Yellow color
     }
 });
 
-// Error handling function
+
 function onErr(err) {
     console.error(err);
     return 1;
