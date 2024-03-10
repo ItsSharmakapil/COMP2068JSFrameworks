@@ -9,7 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "connect": "^3.7.0",
     "mongodb": "^6.3.0"
-  },
-  "devDependencies": {}
+  }
 }
